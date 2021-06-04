@@ -1,0 +1,1 @@
+let winStep=0,winD=document.querySelector(".win__d"),winArr=shuffle([...contentWin].flat());function winChoose(n){if(winStep+=1,~contentWin[n].indexOf(winD.textContent)&&(userWin+=1),winStep<winArr.length)return winD.innerHTML=winArr[winStep];scoreButton(1)}winD.innerHTML=winArr[winStep];

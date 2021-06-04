@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Ливан, Грузия, Армения, Турция</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/draggabilly.pkgd.min.js"></script>
+  <script src="js/db.js"></script>
+</head>
+<body>
+<div class="ave">
+  <div class="ave__title">Введите email</div>
+  <input type="email" maxlength="40" autocomplete="off" onkeyup="checkValidate(this)" autofocus class="ave__input">
+  <div class="ave__button button" onclick="logIn()">Продолжить</div>
+</div>
+<div class="header">
+  <div class="header__menu" onclick="toggleHamburger()"></div>
+  <div class="header__title">Классификация</div>
+</div>
+<div class="main">
+  <div class="task">
+    <div class="lock hidden" style="z-index: 3"></div>
+    <div class="info" style="z-index: 2">
+      <div class="info__title">Определите, какие микрозоны относятся к Кахети, Имерети, Рача-Лечхуми и перетащите его на соответствующую иконку.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page any left" style="z-index: 1">
+      <div class="any__grid">
+        <div class="any__zone">
+          <div class="any__column" style="background-color: #FFC09F">Кахети</div>
+          <div class="any__column" style="background-color: #c2967a">Имерети</div>
+          <div class="any__column" style="background-color: #846653">Рача-Лечхуми</div>
+        </div>
+        <div class="any__move"></div>
+      </div>
+      <div class="button" onclick="scoreButton(0)">Нажмите для завершения!</div>
+    </div>
+  </div>
+
+  <div class="task hidden">
+    <div class="lock hidden" style="z-index: 3"></div>
+    <div class="info" style="z-index: 2">
+      <div class="info__title">Выберите страну, к которой пренадлежит винодельня.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page win left" style="z-index: 1">
+      <div class="win__grid">
+        <div class="win__d"></div>
+        <div class="win__button">
+          <div class="win__country" onclick="winChoose(0)" style="background-image: url('img/lebanon.svg')"></div>
+          <div class="win__country" onclick="winChoose(1)" style="background-image: url('img/georgia.svg')"></div>
+          <div class="win__country" onclick="winChoose(2)" style="background-image: url('img/armenia.svg')"></div>
+          <div class="win__country" onclick="winChoose(3)" style="background-image: url('img/turkey.svg')"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="task hidden">
+    <div class="lock hidden"></div>
+    <div class="info">
+      <div class="info__title">Помогите журналисту написать статью. Для этого заполните пробелы в предложениях.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page scribe left">
+      <div class="scribe__title">
+        <input type="text" maxlength="5" autocomplete="off" class="scribe__input" style='width: calc(83px + (93 - 83) * ((100vw - 320px) / 880))'>Winery. Самое инновационное предприятие Армении. Сотрудничество с Мишелем Ролланом, его вино - Grand Karas.<br>
+        <input type="text" maxlength="7" autocomplete="off" class="scribe__input" style='width: calc(116px + (130 - 116) * ((100vw - 320px) / 880))'>Winery. Органическая винодельня, работающая с автохтонными сортами Армении. Единственная, которая экспериментирует со 100-летними лозами.<br>
+        <input type="text" maxlength="5" autocomplete="off" class="scribe__input" style='width: calc(83px + (93 - 83) * ((100vw - 320px) / 880))'>. Проект «новой волны» Армении, работающий под кураторством итальянских энологов.<br>
+        <input type="text" maxlength="7" autocomplete="off" class="scribe__input" style='width: calc(116px + (130 - 116) * ((100vw - 320px) / 880))'>Wine. Одна из крупнейших винодельческих компаний Армении. Бленды автохтонных и европейских сортов.<br>
+        <input type="text" maxlength="3" autocomplete="off" class="scribe__input" style='width: calc(50px + (58 - 50) * ((100vw - 320px) / 880))'>Ardi. Семейная винодельня, специализирующаяся на автохтонных сортах винограда. Дофиллоксерные лозы.<br>
+        <input type="text" maxlength="3" autocomplete="off" class="scribe__input" style='width: calc(50px + (58 - 50) * ((100vw - 320px) / 880))'>Areni. Винодельня, расположенная в сердце армянского виноделия, в селе Арени. Вина в современном элегантном стиле, но из автохтонных сортов винограда.<br>
+        <input type="text" maxlength="5" autocomplete="off" class="scribe__input" style='width: calc(83px + (93 - 83) * ((100vw - 320px) / 880))'>. Проект под руководством итальянских энологов. Красные вина из армянских автохтонов.<br>
+        <input type="text" maxlength="5" autocomplete="off" class="scribe__input" style='width: calc(83px + (93 - 83) * ((100vw - 320px) / 880))'>Winery. Вина из редких автохтонных сортов: Тозота, Аваги, Хатуна Харджи.<br>
+        <input type="text" maxlength="7" autocomplete="off" class="scribe__input" style='width: calc(116px + (130 - 116) * ((100vw - 320px) / 880))'>Canyon Vineyards. Коллаборация автохтонных и европейских сортов винограда. Вина с говорящими названиями 6100 Rose и 6100 Red.<br>
+      </div>
+      <div class=" button" onclick="scoreButton(2);scribeCheck()">Нажмите для завершения!</div>
+    </div>
+  </div>
+
+
+  <div class="task hidden">
+    <div class="lock hidden"></div>
+    <div class="info">
+      <div class="info__title">Прочитайте внимательно вопрос. Дайте развёрнутый ответ в комментариях к уроку.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page asked left">
+      <div class="asked__title"></div>
+      <div class=" button" onclick="endButton()">Дать ответ!</div>
+    </div>
+  </div>
+</div>
+<div class="footer"></div>
+<div class="menu menu__off">
+  <div class="menu__content"></div>
+</div>
+<script src="js/sort_any.js"></script>
+<script src="js/win.js"></script>
+<script src="js/scribe.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
